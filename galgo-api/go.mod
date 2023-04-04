@@ -49,3 +49,7 @@ require (
 replace github.com/marceloamoreno87/galgo-mail => ../galgo-mail
 
 replace github.com/marceloamoreno87/galgo-storage => ../galgo-storage
+
+replace github.com/marceloamoreno87/galgo-log => ../galgo-log
+
+replace github.com/marceloamoreno87/galgo-bark => ../galgo-bark
