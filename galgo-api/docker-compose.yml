@@ -1,0 +1,42 @@
+version: '3.5'
+
+services:
+
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+      - ../galgo-storage:/galgo-storage
+      - ../galgo-mail:/galgo-mail
+      - ../galgo-bark:/galgo-bark
+      - ../galgo-log:/galgo-log
+    ports:
+      - "4444:4444"
+    restart: unless-stopped
+
+  db:
+    container_name: db
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+    volumes:
+      - db_data:/data/db_data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  mailhog:
+    container_name: mailhog
+    image: mailhog/mailhog:latest
+    restart: always
+    ports:
+      - 1025:1025
+      - 8025:8025
+
+volumes:
+  db_data:
