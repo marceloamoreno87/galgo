@@ -1,4 +1,4 @@
-package helper
+package file
 
 import (
 	"io"
@@ -27,6 +27,10 @@ func Save(file *multipart.FileHeader, path string) (err error) {
 	return
 }
 
-func Delete(filename string) error {
-	return os.Remove(filename)
+func Delete(path string, filename string) error {
+	return os.Remove(path + filename)
+}
+
+func Get(path string, filename string) error {
+	return nil
 }

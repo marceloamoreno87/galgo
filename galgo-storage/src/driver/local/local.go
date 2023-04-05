@@ -3,7 +3,7 @@ package local
 import (
 	"mime/multipart"
 
-	FileHelper "github.com/marceloamoreno87/galgo-storage/src/helper"
+	File "github.com/marceloamoreno87/galgo-storage/src/file"
 )
 
 type StorageLocal struct {
@@ -11,17 +11,17 @@ type StorageLocal struct {
 	Path string
 }
 
-func (s *StorageLocal) Get() {
-	// get file from local storage
-
-}
-
-func (s *StorageLocal) Save() (err error) {
-	err = FileHelper.Save(s.File, s.Path)
+func (s *StorageLocal) Get(path string, filename string) (err error) {
+	err = File.Get(path, filename)
 	return
 }
 
-func (s *StorageLocal) Delete() {
-	// delete file from filesystem
+func (s *StorageLocal) Save() (err error) {
+	err = File.Save(s.File, s.Path)
+	return
+}
 
+func (s *StorageLocal) Delete(path string, filename string) (err error) {
+	err = File.Delete(path, filename)
+	return
 }

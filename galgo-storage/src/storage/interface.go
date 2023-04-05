@@ -1,7 +1,7 @@
 package storage
 
 type StorageInterface interface {
-	Get()
+	Get(path string, filename string) (err error)
 	Save() (err error)
-	Delete()
+	Delete(path string, filename string) (err error)
 }
