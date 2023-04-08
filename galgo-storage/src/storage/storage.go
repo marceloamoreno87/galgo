@@ -1,6 +1,6 @@
 package storage
 
-func Get(s StorageInterface, filename string) (err error) {
+func Get(s StorageExternalInterface, filename string) (err error) {
 	err = s.Get(filename)
 	return
 }

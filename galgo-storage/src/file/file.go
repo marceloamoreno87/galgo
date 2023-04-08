@@ -30,7 +30,3 @@ func Save(file *multipart.FileHeader) (err error) {
 func Delete(filename string) error {
 	return os.Remove("./uploads/" + filename)
 }
-
-func Get(filename string) error {
-	return nil
-}
