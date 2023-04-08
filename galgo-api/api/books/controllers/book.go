@@ -30,7 +30,7 @@ func Store(ctx *gin.Context) {
 	}
 	storage.Save(s)
 
-	// storage.Delete(&local.StorageLocal{}, "./uploads/products/", "IR Marcelo Augusto Moreno.pdf")
+	// storage.Delete(&local.StorageLocal{}, "./uploads/", "IR Marcelo Augusto Moreno.pdf")
 	// TESTE STORAGE LIB
 
 	ctx.File("./uploads/" + "IR Marcelo Augusto Moreno.pdf")
