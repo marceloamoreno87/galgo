@@ -8,20 +8,19 @@ import (
 
 type StorageLocal struct {
 	File *multipart.FileHeader
-	Path string
 }
 
-func (s *StorageLocal) Get(path string, filename string) (err error) {
-	err = File.Get(path, filename)
+func (s *StorageLocal) Get(filename string) (err error) {
+	err = File.Get(filename)
 	return
 }
 
 func (s *StorageLocal) Save() (err error) {
-	err = File.Save(s.File, s.Path)
+	err = File.Save(s.File)
 	return
 }
 
-func (s *StorageLocal) Delete(path string, filename string) (err error) {
-	err = File.Delete(path, filename)
+func (s *StorageLocal) Delete(filename string) (err error) {
+	err = File.Delete(filename)
 	return
 }

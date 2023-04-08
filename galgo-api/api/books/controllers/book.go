@@ -27,14 +27,13 @@ func Store(ctx *gin.Context) {
 	arquivo, _ := ctx.FormFile("file")
 	s := &local.StorageLocal{
 		File: arquivo,
-		Path: "./uploads/products/",
 	}
 	storage.Save(s)
 
 	// storage.Delete(&local.StorageLocal{}, "./uploads/products/", "IR Marcelo Augusto Moreno.pdf")
 	// TESTE STORAGE LIB
 
-	ctx.File("./uploads/products/" + "IR Marcelo Augusto Moreno.pdf")
+	ctx.File("./uploads/" + "IR Marcelo Augusto Moreno.pdf")
 
 	body, err := BookValidator.ValidateStore(ctx)
 	if err != nil {

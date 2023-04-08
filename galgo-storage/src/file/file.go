@@ -7,17 +7,17 @@ import (
 	"path/filepath"
 )
 
-func Save(file *multipart.FileHeader, path string) (err error) {
+func Save(file *multipart.FileHeader) (err error) {
 	src, err := file.Open()
 	if err != nil {
 		return
 	}
 	defer src.Close()
-	if err = os.MkdirAll(filepath.Dir(path), 0755); err != nil {
+	if err = os.MkdirAll(filepath.Dir("./uploads"), 0755); err != nil {
 		return
 	}
 
-	out, err := os.Create(path + file.Filename)
+	out, err := os.Create("./uploads" + file.Filename)
 	if err != nil {
 		return
 	}
@@ -27,10 +27,10 @@ func Save(file *multipart.FileHeader, path string) (err error) {
 	return
 }
 
-func Delete(path string, filename string) error {
-	return os.Remove(path + filename)
+func Delete(filename string) error {
+	return os.Remove("./uploads" + filename)
 }
 
-func Get(path string, filename string) error {
+func Get(filename string) error {
 	return nil
 }
