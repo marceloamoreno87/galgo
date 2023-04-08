@@ -13,11 +13,11 @@ func Save(file *multipart.FileHeader) (err error) {
 		return
 	}
 	defer src.Close()
-	if err = os.MkdirAll(filepath.Dir("./uploads"), 0755); err != nil {
+	if err = os.MkdirAll(filepath.Dir("./uploads/"), 0755); err != nil {
 		return
 	}
 
-	out, err := os.Create("./uploads" + file.Filename)
+	out, err := os.Create("./uploads/" + file.Filename)
 	if err != nil {
 		return
 	}
@@ -28,7 +28,7 @@ func Save(file *multipart.FileHeader) (err error) {
 }
 
 func Delete(filename string) error {
-	return os.Remove("./uploads" + filename)
+	return os.Remove("./uploads/" + filename)
 }
 
 func Get(filename string) error {
