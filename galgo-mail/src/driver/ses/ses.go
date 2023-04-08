@@ -40,6 +40,10 @@ func (MailMessageSes *MailMessageSes) GetBody() string {
 	return MailMessageSes.Body
 }
 
+func (MailMessageSendgrid *MailMessageSes) GetAttachments() []string {
+	return MailMessageSendgrid.Attachments
+}
+
 func (MailMessageSes *MailMessageSes) SetTo(To []string) *MailMessageSes {
 	MailMessageSes.To = To
 	return MailMessageSes
@@ -63,6 +67,11 @@ func (MailMessageSes *MailMessageSes) SetFrom(From string) *MailMessageSes {
 func (MailMessageSes *MailMessageSes) SetBody(Body string) *MailMessageSes {
 	MailMessageSes.Body = Body
 	return MailMessageSes
+}
+
+func (MailMessageSendgrid *MailMessageSes) SetAttachments(Attachments []string) *MailMessageSes {
+	MailMessageSendgrid.Attachments = Attachments
+	return MailMessageSendgrid
 }
 
 func (MailMessageSes *MailMessageSes) Send() (err error) {

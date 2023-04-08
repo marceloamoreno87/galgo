@@ -36,6 +36,10 @@ func (MailMessageSendgrid *MailMessageSendgrid) GetBody() string {
 	return MailMessageSendgrid.Body
 }
 
+func (MailMessageSendgrid *MailMessageSendgrid) GetAttachments() []string {
+	return MailMessageSendgrid.Attachments
+}
+
 func (MailMessageSendgrid *MailMessageSendgrid) SetTo(To []string) *MailMessageSendgrid {
 	MailMessageSendgrid.To = To
 	return MailMessageSendgrid
@@ -58,6 +62,11 @@ func (MailMessageSendgrid *MailMessageSendgrid) SetFrom(From string) *MailMessag
 
 func (MailMessageSendgrid *MailMessageSendgrid) SetBody(Body string) *MailMessageSendgrid {
 	MailMessageSendgrid.Body = Body
+	return MailMessageSendgrid
+}
+
+func (MailMessageSendgrid *MailMessageSendgrid) SetAttachments(Attachments []string) *MailMessageSendgrid {
+	MailMessageSendgrid.Attachments = Attachments
 	return MailMessageSendgrid
 }
 

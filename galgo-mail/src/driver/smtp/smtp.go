@@ -36,6 +36,10 @@ func (MailMessageSmtp *MailMessageSmtp) GetBody() string {
 	return MailMessageSmtp.Body
 }
 
+func (MailMessageSendgrid *MailMessageSmtp) GetAttachments() []string {
+	return MailMessageSendgrid.Attachments
+}
+
 func (MailMessageSmtp *MailMessageSmtp) SetTo(To []string) *MailMessageSmtp {
 	MailMessageSmtp.To = To
 	return MailMessageSmtp
@@ -61,6 +65,11 @@ func (MailMessageSmtp *MailMessageSmtp) SetBody(Body string) *MailMessageSmtp {
 	return MailMessageSmtp
 }
 
+func (MailMessageSendgrid *MailMessageSmtp) SetAttachments(Attachments []string) *MailMessageSmtp {
+	MailMessageSendgrid.Attachments = Attachments
+	return MailMessageSendgrid
+}
+
 func (MailMessageSmtp *MailMessageSmtp) Send() (err error) {
 
 	mailer := gomail.NewMessage()
@@ -69,6 +78,9 @@ func (MailMessageSmtp *MailMessageSmtp) Send() (err error) {
 	mailer.SetHeader("Cc", MailMessageSmtp.GetCc()...)
 	mailer.SetHeader("Subject", MailMessageSmtp.GetSubject())
 	mailer.SetBody("text/html", MailMessageSmtp.GetBody())
+	for _, attach := range MailMessageSmtp.GetAttachments() {
+		mailer.Attach(attach)
+	}
 
 	port, _ := strconv.Atoi(os.Getenv("MAIL_PORT"))
 	dialer := gomail.NewDialer(

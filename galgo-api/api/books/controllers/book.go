@@ -7,11 +7,25 @@ import (
 	BookService "github.com/marceloamoreno87/galgo-api/api/books/services"
 	BookValidator "github.com/marceloamoreno87/galgo-api/api/books/validators"
 	Response "github.com/marceloamoreno87/galgo-api/helpers"
+	"github.com/marceloamoreno87/galgo-mail/src/driver/smtp"
+	"github.com/marceloamoreno87/galgo-mail/src/mail"
 	"github.com/marceloamoreno87/galgo-storage/src/driver/local"
 	"github.com/marceloamoreno87/galgo-storage/src/storage"
 )
 
 func Index(ctx *gin.Context) {
+
+	// TESTE EMAIL LIB
+	message := smtp.MailMessageSmtp{
+		To:          []string{"marceloamoreno87@gmail.com"},
+		Cc:          []string{"marceloamoreno87@gmail.com"},
+		Attachments: []string{"./uploads/IR Marcelo Augusto Moreno.pdf"},
+		Subject:     "teste",
+		From:        "marceloamoreno87@gmail.com",
+		Body:        "<h1>BODE mano</h1>",
+	}
+	go mail.Send(&message)
+	// TESTE EMAIL LIB
 
 	books, err := BookService.Index(ctx)
 	if err != nil {
