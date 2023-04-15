@@ -3,8 +3,7 @@ Nome: GalGo
 Escopo:
     - API Rest
         - ACL (?)
-        - Log (GIN)
-        - Drive (?) -> aws, gcp, az, local
+        - Log (GIN) ?
             - Exception
             - Listener
             - Seeder
@@ -12,12 +11,14 @@ Escopo:
             - Test
             - Preload
 
-
 Roadmap:
  - Criar External Auth (ED)
  - Criar External HTML Generator service (Marcelo)
- - Criar External File service (Marcelo)
- - Criar External Email service (Marcelo)
+ - Add s3 file service
+ - Add gcs file service
+ - Add azs file service
+ - Add attachment ses email service
+ - Add attachment sendgrid email service
  - Criar External CLI service
  - Criar External LOG service
  - Melhorar exception
